@@ -8,8 +8,4 @@ import com.example.indently_habittrackerapp.data.model.HabitModel
 @Database(entities = [HabitModel::class], version = 1)
 abstract class HabitDatabase : RoomDatabase() {
     abstract fun habitDao(): HabitDao
-
-    companion object {
-
-    }
 }

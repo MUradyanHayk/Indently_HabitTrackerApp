@@ -1,4 +1,4 @@
-package com.example.indently_habittrackerapp.di
+package com.example.indently_habittrackerapp.di.module
 
 import android.content.Context
 import androidx.room.Room
@@ -10,19 +10,16 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Singleton
 
 @Module
 @InstallIn(ViewModelComponent::class)
 object HabitDatabaseModule {
     @Provides
-    @Singleton
-    fun provideRoomDatabase(@ApplicationContext context: Context): RoomDatabase {
+    fun provideRoomDatabase(@ApplicationContext context: Context): HabitDatabase {
         return Room.databaseBuilder(context, HabitDatabase::class.java, "habit_db").build()
     }
 
     @Provides
-    @Singleton
     fun provideHabitDao(db: HabitDatabase): HabitDao {
         return db.habitDao()
     }
